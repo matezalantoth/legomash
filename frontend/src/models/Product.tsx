@@ -1,5 +1,7 @@
 export interface Product {
-    model_number: string,
-    title: string,
-    img_link: string
+    model_number: number,
+    set_name: string,
+    img_link: string,
+    link: string,
+    elo: number
 }
