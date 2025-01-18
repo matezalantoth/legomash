@@ -5,12 +5,12 @@ import {Loading} from "../Loading.tsx";
 
 export const ProductCard: React.FC<ProductCardProps> = ({product}: ProductCardProps) => {
 
-    console.log(product.image)
+    console.log(product)
 
     return product ? (
         <>
             <div>
-                <img src={product.image}/>
+                <img src={product.img_link}/>
             </div>
         </>) : <Loading/>
 }
