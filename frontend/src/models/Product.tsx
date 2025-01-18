@@ -1,5 +1,5 @@
 export interface Product {
     model_number: string,
     title: string,
-    image: string
+    img_link: string
 }

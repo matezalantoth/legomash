@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react';
-import {parseData} from "../services/LegoDataParser.tsx";
+import {getData} from "../services/GetData.tsx";
 import {Product} from "../models/Product.tsx";
 import {Loading} from "../components/Loading.tsx";
 import {ProductCard} from "../components/product/ProductCard.tsx";
@@ -11,14 +11,16 @@ export const MashPage = () => {
     const [leftProduct, setLeftProduct] = useState<Product | null>(null)
     const [rightProduct, setRightProduct] = useState<Product | null>(null)
 
-    useEffect((): void => {
-        const result: Product[] = parseData();
-        setProducts(result)
-        const left: number = Math.floor(Math.random() * result.length);
-        const right: number = Math.floor(Math.random() * result.length);
-        setLeftProduct(result[left]);
-        setRightProduct(result[right]);
-    }, [])
+    useEffect(() => {
+        getData().then((result) => {
+            setProducts(result)
+            const left: number = Math.floor(Math.random() * result.length);
+            const right: number = Math.floor(Math.random() * result.length);
+            setLeftProduct(result[left]);
+            setRightProduct(result[right]);
+            console.log(result)
+        });
+    }, []);
 
     const leftProps: ProductCardProps = {product: leftProduct}
     const rightProps: ProductCardProps = {product: rightProduct}
