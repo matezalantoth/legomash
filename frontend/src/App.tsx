@@ -14,7 +14,6 @@ function App() {
                        element={<MashPage/>}/>
                 <Route path="/leaderboard"
                        element={<LeaderboardPage/>}/>
-
             </Routes>
         </BrowserRouter>
     )

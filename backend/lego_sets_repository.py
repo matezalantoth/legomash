@@ -1,13 +1,17 @@
+import os
+
 import mysql.connector
+from dotenv import load_dotenv
 from mysql.connector import IntegrityError
 
 from schemas import LegoSet, LegoSetDTO
 
+load_dotenv()
 db = mysql.connector.connect(
-    host = "localhost",
-    user = "root",
-    password = "admin123",
-    database = "legomash"
+    host = os.getenv("DB_HOST"),
+    user = os.getenv("DB_USER"),
+    password = os.getenv("DB_PASS"),
+    database = os.getenv("DB_DATABASE")
 )
 
 cursor = db.cursor()
