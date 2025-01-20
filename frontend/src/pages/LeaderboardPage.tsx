@@ -10,7 +10,7 @@ export const LeaderboardPage = () => {
             results.sort((a, b) => b.elo - a.elo)
             setProducts(results)
         })
-    })
+    }, [])
 
     return products ?
         <div className="ml-4 mt-2">
@@ -18,6 +18,7 @@ export const LeaderboardPage = () => {
                 return (<li key={i} className="text-xl">{i + 1}. {p.set_name}</li>);
             })}</ul>
         </div>
+
         : (<>
             <p>Leaderboard page works!</p>
         </>)

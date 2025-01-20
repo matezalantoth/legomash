@@ -2,12 +2,12 @@ import {Product} from "../models/Product.tsx";
 
 
 export const getData: () => Promise<Product[]> = async (): Promise<Product[]> => {
-    const res: Response = await fetch("/api/lego-sets")
+    const res: Response = await fetch("http://localhost:8000/lego-sets")
     return await res.json();
 }
 
 export const adjustElo = async (winner: Product, loser: Product) => {
-    await fetch("/api/adjust-elo", {
+    await fetch("http://localhost:8000/adjust-elo", {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json"
@@ -30,7 +30,7 @@ export const getClosestMatch = (sets: Product[], target: Product): Product[] => 
 }
 
 export const getWinnerNewElo = (winner: Product, loser: Product): number => {
-    return calcNewElo(winner.elo, 1, calculateCloseness(loser.elo, winner.elo))
+    return calcNewElo(winner.elo, 1, calculateCloseness(winner.elo, loser.elo))
 }
 
 const calculateCloseness = (ratingA: number, ratingB: number): number => {
